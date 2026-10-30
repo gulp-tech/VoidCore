@@ -1,0 +1,6 @@
+name: HelloVoidCore
+main: example.HelloVoidCore
+version: "1.0.0"
+api: ["3.0.6"]
+author: VoidCore
+description: Minimal Java plugin build/load example
