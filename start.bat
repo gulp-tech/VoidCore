@@ -16,13 +16,13 @@ if not exist "gradlew.bat" (
 where java >nul 2>nul
 if errorlevel 1 (
     echo ERROR: Java was not found in PATH.
-    echo Install a JDK 21, then run this file again.
+    echo Install a JDK 25, then run this file again.
     goto :failed
 )
 
 where javac >nul 2>nul
 if errorlevel 1 (
-    echo ERROR: javac was not found. Install a full JDK 21, not only a JRE.
+    echo ERROR: javac was not found. Install a full JDK 25, not only a JRE.
     goto :failed
 )
 
@@ -30,9 +30,9 @@ set "JAVA_VERSION="
 set "JAVA_MAJOR="
 for /f "tokens=3" %%V in ('java -version 2^>^&1 ^| findstr /i /c:"version"') do set "JAVA_VERSION=%%~V"
 for /f "tokens=1 delims=." %%M in ("%JAVA_VERSION%") do set "JAVA_MAJOR=%%M"
-if not "%JAVA_MAJOR%"=="21" (
-    echo ERROR: This build requires JDK 21. Detected Java version: %JAVA_VERSION%
-    echo Install and select JDK 21 in PATH, then try again.
+if not "%JAVA_MAJOR%"=="25" (
+    echo ERROR: This build requires JDK 25. Detected Java version: %JAVA_VERSION%
+    echo Install and select JDK 25 in PATH, then try again.
     goto :failed
 )
 
@@ -40,12 +40,12 @@ set "JAVAC_VERSION="
 set "JAVAC_MAJOR="
 for /f "tokens=2" %%V in ('javac -version 2^>^&1') do set "JAVAC_VERSION=%%V"
 for /f "tokens=1 delims=." %%M in ("%JAVAC_VERSION%") do set "JAVAC_MAJOR=%%M"
-if not "%JAVAC_MAJOR%"=="21" (
-    echo ERROR: javac must also be JDK 21. Detected compiler version: %JAVAC_VERSION%
+if not "%JAVAC_MAJOR%"=="25" (
+    echo ERROR: javac must also be JDK 25. Detected compiler version: %JAVAC_VERSION%
     goto :failed
 )
 
-echo JDK 21 detected. Gradle will download the build tools and dependencies if needed.
+echo JDK 25 detected. Gradle will download the build tools and dependencies if needed.
 echo This first build can take several minutes and requires internet access.
 echo.
 call gradlew.bat buildSkipChores --no-daemon
@@ -71,7 +71,7 @@ exit /b 0
 
 :failed
 echo.
-echo BUILD FAILED. Read the error above, check JDK 21 and internet access, then retry.
+echo BUILD FAILED. Read the error above, check JDK 25 and internet access, then retry.
 echo.
 pause
 exit /b 1
