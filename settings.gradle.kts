@@ -8,11 +8,8 @@ pluginManagement {
         mavenLocal()
         maven("https://jitpack.io")
         maven("https://repo.opencollab.dev/maven-releases/")
-        maven("https://repo.opencollab.dev/maven-snapshots/") {
-            mavenContent {
-                snapshotsOnly()
-            }
-        }
+        // Do not filter timestamped SNAPSHOT versions out of this repository.
+        maven("https://repo.opencollab.dev/maven-snapshots/")
     }
 }
 
@@ -22,14 +19,11 @@ dependencyResolutionManagement {
         mavenLocal()
         maven("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/")
         maven("https://maven.aliyun.com/repository/public")
-        maven("https://repo.powernukkitx.org/releases")
-        maven("https://jitpack.io")
+        // Try public OpenCollab repositories before the PNX origin, which may be unreachable on some networks.
+        maven("https://repo.opencollab.dev/maven-snapshots/")
         maven("https://repo.opencollab.dev/maven-releases/")
-        maven("https://repo.opencollab.dev/maven-snapshots/") {
-            mavenContent {
-                snapshotsOnly()
-            }
-        }
+        maven("https://jitpack.io")
+        maven("https://repo.powernukkitx.org/releases")
     }
 }
 
