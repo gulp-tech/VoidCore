@@ -18,7 +18,7 @@ The runnable jar is generated at:
 build/VoidCore.jar
 ```
 
-On Windows, install **JDK 25** (both `java` and `javac` must be on `PATH`), extract the archive, and double-click `start.bat`. It runs `gradlew.bat buildSkipChores` and copies the finished jar to `VoidCore.jar` in the extracted folder (Gradle's output is `build\VoidCore.jar`). The first build downloads Gradle and dependencies, so internet access is required. No precompiled server binary is included.
+On Windows, install **JDK 25** (both `java` and `javac` must be on `PATH`), extract the archive, and double-click `start.bat`. It runs `gradlew.bat buildSkipChores` and copies the finished jar to `VoidCore.jar` in the extracted folder (Gradle's output is `build\VoidCore.jar`). The first build downloads Gradle and dependencies, so internet access is required. The Gradle wrapper is configured to retry slow downloads (up to three retries, with a five-minute timeout). No precompiled server binary is included.
 
 ## Run
 
