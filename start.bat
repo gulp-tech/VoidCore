@@ -53,7 +53,13 @@ if not "%JAVAC_MAJOR%"=="25" (
 echo JDK 25 detected. Gradle will download the build tools and dependencies if needed.
 echo This first build can take several minutes and requires internet access.
 echo.
-call gradlew.bat buildSkipChores --no-daemon
+if exist "gradle-9.7.1\bin\gradle.bat" (
+    echo Using the local Gradle distribution.
+    call "gradle-9.7.1\bin\gradle.bat" buildSkipChores --no-daemon
+) else (
+    echo Using the Gradle Wrapper. If its download fails, extract gradle-9.7.1-bin.zip beside this file.
+    call gradlew.bat buildSkipChores --no-daemon
+)
 if errorlevel 1 goto :failed
 
 if not exist "build\VoidCore.jar" (
