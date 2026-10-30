@@ -18,7 +18,7 @@ The runnable jar is generated at:
 build/VoidCore.jar
 ```
 
-On Windows use `gradlew.bat buildSkipChores`. The first Gradle run downloads the wrapper distribution and dependencies. No compiled server binary is committed; compile the source yourself.
+On Windows, install **JDK 21** (both `java` and `javac` must be on `PATH`), extract the archive, and double-click `start.bat`. It runs `gradlew.bat buildSkipChores` and copies the finished jar to `VoidCore.jar` in the extracted folder (Gradle's output is `build\VoidCore.jar`). The first build downloads Gradle and dependencies, so internet access is required. No precompiled server binary is included.
 
 ## Run
 
@@ -28,11 +28,13 @@ Linux/macOS:
 java -Xms1G -Xmx4G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -jar build/VoidCore.jar
 ```
 
-Windows:
+Windows (after the build):
 
 ```bat
-java -Xms1G -Xmx4G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -jar build\VoidCore.jar
+run-server.bat
 ```
+
+Set the memory limit before launching if needed, for example `set SERVER_MEMORY=8192`.
 
 The first launch creates the server configuration and world files in the current directory. Review the generated EULA/config prompts, then restart. Open the Bedrock server port (default **UDP 19132**) in your host firewall and set the advertised port/MOTD/player limit in `server.properties`.
 
