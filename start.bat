@@ -12,6 +12,11 @@ if not exist "gradlew.bat" (
     echo ERROR: gradlew.bat was not found. Extract the complete source archive first.
     goto :failed
 )
+if not exist "gradle\wrapper\gradle-wrapper.jar" (
+    echo ERROR: Gradle Wrapper jar is missing from this source archive.
+    echo Re-download and extract the complete VoidCore source archive.
+    goto :failed
+)
 
 where java >nul 2>nul
 if errorlevel 1 (

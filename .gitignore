@@ -212,6 +212,9 @@ rebel-remote.xml
 
 # Nukkit generated files
 banned-ips.json
+
+# Gradle Wrapper is required to build from a source checkout
+!gradle/wrapper/gradle-wrapper.jar
 banned-players.json
 nukkit.yml
 ops.txt
